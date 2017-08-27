@@ -19,7 +19,9 @@ class EziDebitApi
 {
 	private $digitalKey;
 	private $pci = 'https://api.demo.ezidebit.com.au/v3-5/pci?singleWsdl'; // PCI SANDBOX CHANGE IN PRODUCTION
+//	private $pci = 'https://api.ezidebit.com.au/v3-5/pci?singleWsdl'; // PCI FOR PRODUCTION
 	private $nonPci = 'https://api.demo.ezidebit.com.au/v3-5/nonpci?singleWsdl'; // NON-PCI SANDBOX CHANGE IN PRODUCTION
+//	private $nonPci = 'https://api.ezidebit.com.au/v3-5/nonpci?singleWsdl'; // NON-PCI FOR PRODUCTION
 
 	public function __construct()
 	{
