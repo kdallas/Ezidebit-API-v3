@@ -1,24 +1,31 @@
 <?php
 /**
- * @copyright Copyright (c) 2016 PIXEL BIRD PTY LTD
- * @link http://www.pixelbird.com.au
+ * @link https://github.com/pixelbirdptyltd/yii2/blob/master/EziDebit35Api.php
  * @author Dustin Gray
  * @version 1.0
+ * @author Larry Browning
+ * @version 1.1
  */
-namespace common\components;
 
-use Yii;
-use yii\base\Component;
 use SoapClient;
 
+defined('TEST_V3_KEY') or define('TEST_V3_KEY', '?'); // enter your key (and uncomment line 26)
+defined('PROD_V3_KEY') or define('PROD_V3_KEY', '?'); // enter your key (and uncomment line 27)
+
 /**
- * Extends Yii2 Compnent to connect to the EziDebit v3.5 Web Services API
+ * Class for connecting to the EziDebit v3.5 Web Services API
  */
-class EziDebitApi extends Component
+class EziDebitApi
 {
-	public $digitalKey = 'INSERT YOUR DIGITAL KEY HERE';
-	public $pci = 'https://api.demo.ezidebit.com.au/v3-5/pci?singleWsdl'; // PCI SANDBOX CHANGE IN PRODUCTION
-	public $nonPci = 'https://api.demo.ezidebit.com.au/v3-5/nonpci?singleWsdl'; // NON-PCI SANDBOX CHANGE IN PRODUCTION
+	private $digitalKey;
+	private $pci = 'https://api.demo.ezidebit.com.au/v3-5/pci?singleWsdl'; // PCI SANDBOX CHANGE IN PRODUCTION
+	private $nonPci = 'https://api.demo.ezidebit.com.au/v3-5/nonpci?singleWsdl'; // NON-PCI SANDBOX CHANGE IN PRODUCTION
+
+	public function __construct()
+	{
+	//	$this->digitalKey = TEST_V3_KEY;
+	//	$this->digitalKey = PROD_V3_KEY;
+	}
 
 	/**
 	 * EZIDEBIT INSTANT PAYMENTS
