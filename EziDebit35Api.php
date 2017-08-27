@@ -7,10 +7,7 @@
  * @version 1.1
  */
 
-use SoapClient;
-
-defined('TEST_V3_KEY') or define('TEST_V3_KEY', '?'); // enter your key (and uncomment below)
-defined('PROD_V3_KEY') or define('PROD_V3_KEY', '?'); // enter your key (and uncomment below)
+require_once('EziKeys.php');
 
 /**
  * Class for connecting to the EziDebit v3.5 Web Services API
@@ -23,9 +20,19 @@ class EziDebitApi
 	private $nonPci = 'https://api.demo.ezidebit.com.au/v3-5/nonpci?singleWsdl'; // NON-PCI SANDBOX CHANGE IN PRODUCTION
 //	private $nonPci = 'https://api.ezidebit.com.au/v3-5/nonpci?singleWsdl'; // NON-PCI FOR PRODUCTION
 
+	// use defaultData to pre-populate $data before method calls
+	public $defaultData = [
+		'eziDebitCID' => '',
+		'systemRef' => '',
+		'customerStatus' => 'ALL',
+		'orderBy' => 'EzidebitCustomerID',
+		'order' => 'ASC',
+		'pageNumber' => '1'
+	];
+
 	public function __construct()
 	{
-	//	$this->digitalKey = TEST_V3_KEY;
+		$this->digitalKey = TEST_V3_KEY;
 	//	$this->digitalKey = PROD_V3_KEY;
 	}
 
@@ -560,7 +567,7 @@ class EziDebitApi
 	 */
 	public function getCustomerDetails($data) {
 		// provide the EziDebit API endpoint
-		$soapclient = new SoapClient($this->pci);
+		$soapclient = new SoapClient($this->nonPci);
 
 		$params = [
 				'DigitalKey' => $this->digitalKey,
@@ -608,7 +615,7 @@ class EziDebitApi
 	 */
 	public function getCustomerList($data) {
 		// provide the EziDebit API endpoint
-		$soapclient = new SoapClient($this->pci);
+		$soapclient = new SoapClient($this->nonPci);
 
 		$params = [
 				'DigitalKey' => $this->digitalKey,
