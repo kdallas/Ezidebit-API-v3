@@ -9,8 +9,8 @@
 
 use SoapClient;
 
-defined('TEST_V3_KEY') or define('TEST_V3_KEY', '?'); // enter your key (and uncomment line 26)
-defined('PROD_V3_KEY') or define('PROD_V3_KEY', '?'); // enter your key (and uncomment line 27)
+defined('TEST_V3_KEY') or define('TEST_V3_KEY', '?'); // enter your key (and uncomment below)
+defined('PROD_V3_KEY') or define('PROD_V3_KEY', '?'); // enter your key (and uncomment below)
 
 /**
  * Class for connecting to the EziDebit v3.5 Web Services API
