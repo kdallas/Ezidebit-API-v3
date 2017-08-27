@@ -27,7 +27,8 @@ class EziDebitApi
 		'customerStatus' => 'ALL',
 		'orderBy' => 'EzidebitCustomerID',
 		'order' => 'ASC',
-		'pageNumber' => '1'
+		'pageNumber' => '1',
+		'username' => ''
 	];
 
 	public function __construct()
